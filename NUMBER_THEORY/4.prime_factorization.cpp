@@ -12,6 +12,7 @@ void prime_factorization(int n){
             while(n%i==0){
                 cnt++;
                 n=n/i;
+                
             }
             cout<<i<<"^"<<cnt<<" ";
         }
