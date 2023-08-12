@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+
 bool is_pal(string s, int i, int l){
     if(s[i]!=s[l])return false;
     else if(i<=l)return true;
