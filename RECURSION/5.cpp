@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+
 void reverse_array(int *arr, int i, int n){
     if(i==n)return;
     swap(arr[i],arr[n]);
