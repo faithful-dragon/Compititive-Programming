@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+
 void print_n_2_1(int n){
     cout<<n<<" ";
     if(n==1)return;
