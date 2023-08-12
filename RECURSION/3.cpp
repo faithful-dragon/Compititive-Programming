@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+
 void print_1_2_n(int n){
     if(n==0)return;
     print_1_2_n(n-1);
