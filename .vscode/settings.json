@@ -1,5 +1,10 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+<<<<<<< HEAD
+        "vector": "cpp",
+=======
+>>>>>>> LEETCODE
+        "ostream": "cpp"
     }
 }
