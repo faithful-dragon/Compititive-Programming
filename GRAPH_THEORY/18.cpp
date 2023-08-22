@@ -48,7 +48,6 @@ int main(){
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
             if(vis[i][j]==false and land[i][j]==1){
-                cout<<i<<" "<<j<<endl;
                 cnt++;
                 dfs(i,j,n,m,land,vis);
             }
