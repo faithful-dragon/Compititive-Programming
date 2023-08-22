@@ -5,6 +5,11 @@
 // 0 1 1
 // 1 0 1
 
+// 3 3
+// 2 1 1
+// 0 1 1
+// 1 1 1
+
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -81,7 +86,7 @@ int main(){
         }
     }
 
-    int time = 0;
+    int time;
     time = orangesRotting(grid);
     cout<<"time = "<<time<<endl;
     return 0;
