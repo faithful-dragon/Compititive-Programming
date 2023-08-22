@@ -17,17 +17,19 @@ bool is_valid(int i, int j, int n, int m){
     return true;
 }
 
-void paint(int i, int j, int nc, int n, int m, vector<vector<int>>&grid, vector<vector<bool>>&vis){
+void paint(int i, int j, int oc,int nc, int n, int m, vector<vector<int>>&grid, vector<vector<bool>>&vis){
     if(is_valid(i,j,n,m)==false)return;
     if(vis[i][j]==true)return;
-    if(grid[i][j]==0)return;
+    if(grid[i][j]==nc)return;
 
-    vis[i][j]=true;
-    grid[i][j] =nc;
-    paint(i+1,j,nc,n,m,grid,vis);
-    paint(i-1,j,nc,n,m,grid,vis);
-    paint(i,j+1,nc,n,m,grid,vis);
-    paint(i,j-1,nc,n,m,grid,vis);
+    if(grid[i][j]==oc){
+        vis[i][j]=true;
+        grid[i][j] =nc;
+        paint(i+1,j,oc,nc,n,m,grid,vis);
+        paint(i-1,j,oc,nc,n,m,grid,vis);
+        paint(i,j+1,oc,nc,n,m,grid,vis);
+        paint(i,j-1,oc,nc,n,m,grid,vis);
+    }
 
 }
 
@@ -46,7 +48,8 @@ int main(){
     int cnt=0;
     int sr,sc,nc;
     cin>>sr>>sc>>nc;
-    paint(sr,sc,nc,n,m,grid,vis);
+    int oc = grid[sr][sc];   // old color
+    paint(sr,sc,oc,nc,n,m,grid,vis);
     cout<<endl<<"updated grid "<<endl;
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
