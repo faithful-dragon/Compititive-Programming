@@ -26,6 +26,23 @@ int fib2(int n){
     return dp[n];
 }
 
+// memory optimization
+// TC = O(N)
+// SC = O(1)
+int fib3(int n){
+    if(n<=1)return 1;
+    int prev1 = 1;
+    int prev2 = 0;
+    int next;
+    for(int i=2;i<=n;i++){
+        next = prev1 + prev2;
+        prev2 = prev1;
+        prev1 = next;
+    }
+    return next;
+}
+
+
 int main(){
     int t;
     cin>>t;
@@ -33,6 +50,8 @@ int main(){
     int nth = fib1(t,dp);
     cout<<t<<"th fib no : "<<nth<<endl;
     nth = fib2(t);
+    cout<<t<<"th fib no : "<<nth<<endl;
+    nth = fib3(t);
     cout<<t<<"th fib no : "<<nth<<endl;
     return 0;
 }
