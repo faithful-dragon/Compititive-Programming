@@ -4,7 +4,7 @@ using namespace std;
 
 // 0 1 1 2 3 5 8 13 ....
 // TC = O(N)
-// SC = O(N)
+// SC = 2*O(N)
 
 int fib1(int n, vector<int>&dp){
     if(n<=1)return dp[n] = n;
