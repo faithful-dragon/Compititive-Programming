@@ -4,16 +4,19 @@ using namespace std;
 
 
 // memorization
-int possible_ways(int n, vector<int>&dp){
+// TC = O(N)
+int climbStairs1(int n, vector<int>&dp){
     if(n<0)return 0;
     else if(n<=1)return dp[n]=1;
     else if(dp[n]!=-1)return dp[n];
-    else return dp[n]=possible_ways(n-1, dp) + possible_ways(n-2, dp);
+    else return dp[n]=climbStairs1(n-1, dp) + climbStairs1(n-2, dp);
 }
 
 
 // tabulation
-int climbStairs(int n) {
+// TC = O(N)
+// SC = O(N)
+int climbStairs2(int n) {
     if(n<=2)
         return n;
     vector<int> dp(n+1);
@@ -28,11 +31,32 @@ int climbStairs(int n) {
 
 
 
+// memory optimization
+// TC = O(N)
+// SC = O(1)
+int climbStairs3(int n){
+    if(n<=2)return n;
+    int prev1 = 2;
+    int prev2 = 1;
+    int next;
+    for(int i=3;i<=n;i++){
+        next = prev1 + prev2;
+        prev2 = prev1;
+        prev1 = next;
+    }
+    return next;
+}
+
+
 int main(){
     int t;
     cin>>t;
-    vector<int>dp(t+2,-1);
-    int x = possible_ways(t,dp);
+    vector<int>dp(t+1,-1);
+    int x = climbStairs1(t,dp);
+    cout<<"no of possoble ways :  "<<x<<endl;
+    x = climbStairs2(t);
+    cout<<"no of possoble ways :  "<<x<<endl;
+    x = climbStairs3(t);
     cout<<"no of possoble ways :  "<<x<<endl;
     return 0;
 }
