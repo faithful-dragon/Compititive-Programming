@@ -64,3 +64,6 @@ int main(){
     cout<<endl;
     return 0;
 }
+
+
+// g++ -std=c++11 17.cpp
