@@ -43,7 +43,7 @@ bool sub_sum1(int i,int k, vector<int>v,  vector<vector<int>>&dp){
 bool sub_sum2(int n, int k, vector<int>v){
     vector<vector<bool>>dp(n,vector<bool>(k+1,0));
     for(int i=0;i<n;i++)dp[i][0]=true;
-    dp[0][v[0]] = true;
+    if(v[0]<=k)dp[0][v[0]] = true;
 
     for(int i=1;i<n;i++){
         for(int target=1;target<=k;target++){
@@ -63,7 +63,7 @@ bool sub_sum2(int n, int k, vector<int>v){
 bool sub_sum3(int n, int k, vector<int>v){
     vector<bool>prev(k+1,0);
     prev[0]=true;
-    prev[v[0]] = true;
+    if(v[0]<=k)prev[v[0]] = true;
 
     for(int i=1;i<n;i++){
         vector<bool>curr(k+1,0);
