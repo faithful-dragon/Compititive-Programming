@@ -1,4 +1,4 @@
-// max sum of subsequence with no adj element
+// max sum of subsequence with no adj element in a cicular array
 
 // 3
 // 2 3 2
