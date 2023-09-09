@@ -13,9 +13,9 @@ int fib1(int n, vector<int>&dp){
     else return dp[n] = fib1(n-1,dp) + fib1(n-2,dp);
 }
 
-// tabulation
+// tabulation  : from base case to solution
 // TC = O(N)
-// SC = O(N)
+// SC = O(N)  : reducing recurssion stack space
 int fib2(int n){
     vector<int>dp(n+1);
     dp[0]=0;
