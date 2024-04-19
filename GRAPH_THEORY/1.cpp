@@ -46,3 +46,15 @@ int main(){
     }
 
 }
+
+
+// note : When the graph contains a large number of edges then it is good to store it as a matrix 
+// because only some entries in the matrix will be empty. 
+// An algorithm such as Prim’s and Dijkstra adjacency matrix is used to have less complexity.
+
+/*
+Action	        Adjacency Matrix	Adjacency List
+Adding Edge	        O(1)	            O(1)
+Removing an edge	O(1)	            O(N)
+Initializing	    O(N*N)	            O(N)
+*/
