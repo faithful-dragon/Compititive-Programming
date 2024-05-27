@@ -1,4 +1,4 @@
-// no of islands
+// update color
 
 // 3 3
 // 1 1 1
