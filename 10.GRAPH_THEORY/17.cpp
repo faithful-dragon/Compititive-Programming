@@ -1,4 +1,4 @@
-// dfs on unconnected grapgh
+// bfs on unconnected graph
 
 // 12 8
 // 0 1 0 3 0 5 1 2 3 4 3 6 7 8 9 10
