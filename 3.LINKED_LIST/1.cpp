@@ -28,6 +28,22 @@ int length_LL(Node *head){
     return len;
 }
 
+
+int sumOfLastN_Nodes(struct Node* head, int n){
+    int len = length_LL(head);
+    n = len-n;
+    while(n>0){
+        n--;
+        head = head->next;
+    }
+    int sum=0;
+    while(head!=NULL){
+        sum+=head->data;
+        head = head->next;
+    }
+    return sum;
+}
+
 // insert node at beginning
 Node *InsertAtBeg(int data, Node *head){
     Node *temp = new Node(data,NULL);
@@ -197,6 +213,52 @@ void display(Node *head){
     cout<<endl;
 }
 
+// delete alternate node
+Node* deleteAlt(struct Node *head){
+    Node *mover = head;
+    while(mover->next != NULL){
+        Node *del = mover->next;
+        mover->next = del->next;
+        delete del;
+        if(mover->next == NULL)break;
+        else mover=mover->next;
+    }
+    return head;
+}
+
+// insert at middle
+//Function to insert a node in the middle of the linked list.
+Node* insertInMiddle(Node* head, int x){
+	Node *mover = head;
+	int len=0;
+	while(mover!=NULL){
+	    mover = mover->next;
+	    len++;
+	}
+	if((len&1)==1)len++;
+	int pos = len/2 + 1;
+	
+	mover = head;
+	while(pos>2){
+	    mover = mover->next;
+	    pos--;
+	}
+	
+	Node *temp = new Node(x,NULL);
+	temp->next = mover->next;
+	mover->next=temp;
+	return head;
+}
+
+// Should return data of node at given index. The function may
+//  assume that there are at least index+1 nodes in linked list
+int GetNth(struct Node* head, int index){
+    while(index!=1){
+        index--;
+        head = head->next;
+    }
+    return head->data;
+}
 
 int main(){
     Node *head1 = new Node(1,NULL);
