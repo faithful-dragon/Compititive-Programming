@@ -28,6 +28,25 @@ int length_LL(Node *head){
     return len;
 }
 
+// Function to find the data of kth node from the end of a linked list.
+int getKthFromLast(Node *head, int k) {
+    int len=0;
+    Node *mover = head;
+    while(mover!=NULL){
+        len++;
+        mover=mover->next;
+    }
+    
+    if(len<k)return -1;
+    else k = len-k+1;
+    
+    mover=head;
+    while(k>1){
+        mover=mover->next;
+        k--;
+    }
+    return mover->data;
+}
 
 int sumOfLastN_Nodes(struct Node* head, int n){
     int len = length_LL(head);
@@ -186,6 +205,12 @@ bool areIdentical(Node *head1,Node *head2){
     return true;
 }
 
+//Function to delete a node without any reference to head pointer.
+void deleteNode(Node *del){
+    Node *nextNode = del->next;
+    del->data=nextNode->data;
+    del->next=nextNode->next;
+}
 
 // middle element
 Node *middleEle(Node *head){
