@@ -8,8 +8,8 @@ int binary_search(int arr[], int n, int key){
     int high = n-1;
     int mid;
 
-    while(low<high){
-        mid = low + (high-low)/2;
+    while(low<=high){
+        mid = low + (high-low)/2;         // to overcome overflow
         if(arr[mid]==key)return mid;
         else if(arr[mid]<key)low=mid+1;
         else high=mid-1;
