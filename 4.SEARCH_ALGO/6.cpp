@@ -1,4 +1,4 @@
-// first and last occurence
+// floor and ceil
 #include <iostream>
 #include <vector>
 using namespace std;
