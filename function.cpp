@@ -75,12 +75,32 @@ int thirdLargest(int arr[], int n){
 }
 
 string reverseString(string str){
-        int i=0;
-        int j=str.length()-1;
-        while(i<j){
-            swap(str[i],str[j]);
-            i++;
-            j--;
-        }
-        return str;
+    int i=0;
+    int j=str.length()-1;
+    while(i<j){
+        swap(str[i],str[j]);
+        i++;
+        j--;
     }
+    return str;
+}
+
+
+// to check vowel
+bool vowel(char c){
+    if(c=='a' or c=='e' or c=='i' or c=='o' or c=='u')return true;
+    else if(c=='A' or c=='E' or c=='I' or c=='O' or c=='U')return true;
+    return false;
+}
+
+// to check char == num
+bool isnum(char c){
+    if(c=='0' or c=='1' or c=='2' or c=='3' or c=='4' or c=='5' or c=='6' or c=='7' or c=='8' or c=='9')return true;
+    return false;
+}
+
+int main(){
+    for(int i=1;i<1000;i=i*10){
+        cout<<i<<" -> "<<i%7<< " : "<<(100+i)<<" -> "<<(100+i)%7<<endl;
+    }
+}
