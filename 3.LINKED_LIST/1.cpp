@@ -251,6 +251,25 @@ Node* deleteAlt(struct Node *head){
     return head;
 }
 
+//Function to find the length of a loop in the linked list.
+int countNodesinLoop(struct Node *head){
+    Node *slow=head;
+    Node *fast=head->next;
+    int len = 0;
+    while(fast!=NULL and fast->next != NULL and slow!=fast){
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    if(fast==NULL or fast->next==NULL)return 0;
+    fast = fast->next;
+    len=1;
+    while(fast != slow){
+        fast = fast->next;
+        len++;
+    }
+    return len;
+}
+
 // insert at middle
 //Function to insert a node in the middle of the linked list.
 Node* insertInMiddle(Node* head, int x){
