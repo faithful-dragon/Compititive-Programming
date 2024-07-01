@@ -112,6 +112,76 @@ vector<int> st_postorder(Node *root){
 }
 
 
+// using one stack;
+vector<int> st_postorder2(Node *root){
+    vector<int>ans;
+    stack<Node *>st;
+    Node *curr = root;
+
+    while(curr != NULL or st.empty()==false){
+        if(curr != NULL){
+            st.push(curr);
+            curr = curr->left;
+        }
+        else{
+            Node *temp = st.top()->right;
+            if(temp==NULL){
+                temp=st.top();
+                st.pop();
+                ans.push_back(temp->data);
+
+                while(st.empty()==false and temp == st.top()->right){
+                    temp=st.top();
+                    st.pop();
+                    ans.push_back(temp->data);
+                }
+            }
+            else curr = temp;
+        }
+    }
+
+    return ans;
+}
+
+// print all order
+vector<vector<int>> all_order(Node *root){
+    vector<vector<int>>ans;
+    vector<int>preorder;
+    vector<int>inorder;
+    vector<int>postorder;
+
+    stack<pair<Node*,int>>st;
+    st.push({root,1});
+    pair<Node*,int>x;
+
+    while(st.empty()==false){
+        pair<Node*,int> p = st.top();
+        Node *temp = p.first;
+        st.pop();
+        
+        if(p.second==1){
+            preorder.push_back(temp->data);
+            x={temp,p.second+1};
+            st.push(x);
+            if(temp->left!=NULL)st.push({temp->left,1});
+        }
+        else if(p.second==2){
+            inorder.push_back(temp->data);
+            x={temp,p.second+1};
+            st.push(x);
+            if(temp->right!=NULL)st.push({temp->right,1});
+        }
+        else{
+            postorder.push_back(temp->data);
+        }
+    }
+
+    ans.push_back(preorder);
+    ans.push_back(inorder);
+    ans.push_back(postorder);
+    return ans;
+}
+
 int main(){
     Node *root = createTree();
     cout<<endl;
@@ -134,5 +204,15 @@ int main(){
     vector<int>pto = st_postorder(root);
     for(int x:pto)cout<<x<<" ";
     cout<<endl;
+
+    pto = st_postorder2(root);
+    for(int x:pto)cout<<x<<" ";
+    cout<<endl;
+
+    vector<vector<int>>all = all_order(root);
+    for(auto a :all){
+        for(int x:a)cout<<x<<" ";
+        cout<<endl;
+    }
 
 }
