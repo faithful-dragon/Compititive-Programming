@@ -3,6 +3,10 @@
         "iostream": "cpp",
         "vector": "cpp",
         "ostream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp",
+        "set": "cpp",
+        "__node_handle": "cpp"
     }
 }
