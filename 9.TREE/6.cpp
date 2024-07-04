@@ -41,7 +41,19 @@ bool sym(Node *a){
     if(a==NULL)return true;
     if(a->left == NULL or a->right == NULL) return a->left == a->right;
     if(a->left->data!=a->right->data)return false;
-    return (a->left) and (a->right);
+    return sym(a->left) and sym(a->right);
+}
+
+// Mirror image
+bool Sym(Node *a, Node *b){
+    if(a==NULL or b==NULL)return a==b;
+    if(a->data != b->data) return false;
+    return Sym(a->left,b->right) and Sym(a->right,b->left);
+    
+}
+bool isSymmetric(struct Node* a){
+    if(a==NULL)return true;
+    return Sym(a->left,a->right);
 }
 
 // path tp node x
@@ -91,6 +103,27 @@ int width(Node *root){
     return ans;
 }
 
+int getMaxWidth(Node* root) {
+    int ans = 0;
+    if(root==NULL)return ans;
+    
+    queue<Node *>q;
+    q.push(root);
+    
+    while(q.empty() == false){
+        int size = q.size();
+        ans = max(ans,size);
+        for(int i=0;i<size;i++){
+            root = q.front();
+            q.pop();
+            
+            if(root->left)q.push(root->left);
+            if(root->right)q.push(root->right);
+        }
+    }
+    return ans;
+}
+
 // children sum property
 void rearrange(Node *root){
     if(root == NULL)return;
@@ -110,6 +143,14 @@ void rearrange(Node *root){
     if(root->left)x+=root->left->data;
     if(root->right)x+=root->right->data;
     if(root->left or root->right)root->data = x;
+}
+
+// mirror
+void mirror(Node* node) {
+    if(node==NULL)return;
+    mirror(node->left);
+    mirror(node->right);
+    swap(node->left,node->right);
 }
 
 int main(){
