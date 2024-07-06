@@ -51,6 +51,26 @@ int no_of_rot(vector<int>arr){
     return rot;
 }
 
+int findKRotation(vector<int> &arr) {
+    int low =0;
+    int high = arr.size()-1;
+    int mid = (low + high )/2;
+    
+    while(low<high){
+        mid = (low + high )/2;
+        
+        if (arr[mid]<= arr[high] ){
+            high = mid;
+        }
+        else{
+            low = mid+1;
+        }
+        
+    }
+    
+    return low;
+}
+
 int main(){
     const int n = 13;
     vector<int>v{8,9,10,11,12,13,1,2,3,4,5,6,7};
