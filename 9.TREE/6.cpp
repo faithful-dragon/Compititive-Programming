@@ -103,6 +103,39 @@ int width(Node *root){
     return ans;
 }
 
+int verticalWidth(Node* root) {
+    if(root==NULL)return 0;
+    
+    queue<pair<Node*, int>>q;
+    q.push({root, 0});
+    int mx=INT_MIN;
+    int mn=INT_MAX;
+    
+    while(q.empty()==false){
+        
+        int size = q.size();
+        for(int i=0;i<size;i++){
+            
+            auto root = q.front();
+            int line = root.second;
+            q.pop();
+            mn = min(mn,line);
+            mx = max(mx,line);
+            
+            if(root.first->left){
+                q.push({root.first->left, line-1});
+            }
+            
+            if(root.first->right){
+                q.push({root.first->right, line+1});
+            }
+        }
+    }
+    
+    return (mx-mn+1);
+}
+
+
 int getMaxWidth(Node* root) {
     int ans = 0;
     if(root==NULL)return ans;
